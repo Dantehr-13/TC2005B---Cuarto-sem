@@ -1,10 +1,176 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <style>
+            body{
+                margin: 0 auto;
+                max-width: 50 em;
+            }
+        </style>
+        <link rel="stylesheet" href="style-min.css">
+        <!-- ............................................................. -->
+         <div class="header">
+            <h1>INTRODUCCIÓN A LAS APLICACIONES WEB</h1>
+        </div>
+        <!-- ............................................................. -->
     </head>
-    <body>
 
+    <body>
+        <!-- ............................................................. -->
+         <nav>
+            <h2> Dante Hernández Ramírez - A01668070</h2>
+         </nav>
+         <!-- ............................................................ -->
+          <main>
+            <section>
+                <article>
+                    <h4>¿Cuál es la diferencia entre internet y la World Wide Web?</h4>
+                    <p>
+                       El internet principalmente está compuesto de infrestructura física, protocolos, 
+                       sistemas de nombres de dominio y la red mundial (WWW). En pocas palabras, la 
+                       World Wide Web está contenida dentro de lo que es internet.
+                    </p>
+
+
+                    <h4>¿Cuáles son las partes de una URL?</h4>
+                    <ul>
+                        <li> Protocolo</li>
+                        <li> Subdominio</li>
+                        <li> Dominio</li>
+                        <li> Subcarpeta</li>
+                        <li> Slug</li>
+                        <li> Parámetros</li>
+                    </ul>
+
+                    <h4>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h4>
+                    <ul>
+                        <li> GET: Solicita un recurso, como un HTML del servidor web</li>
+                        <li> HEAD: Solicita solo el encabezado del archivo, sin el mismo</li>
+                        <li> POST: Se utiliza para enviar un recurso en específico</li>
+                        <li> PUT: Similar a POST, con la diferencia de que este puede ser ejecutado varias veces</li>
+                        <li> PATCH: Modificaciones parciales de un recurso específico</li>
+                        <li> DELETE: Elimina un recurso específico</li>
+                    </ul>
+
+                    <h4>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario
+                         y contraseña en algún sitio? ¿Por qué?</h4>
+                    <p>
+                        POST, ya que los datos que se registran se envían en el cuerpo del HTTP.
+                    </p>
+
+                    <h4>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</h4>
+                    <p>
+                        GET, ya que es el principal método de obtención de datos y recursos.
+                    </p>
+
+                    <h4>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</h4>
+                    <p>
+                        El código de respuesta 200 indica que la solicitud de datos fue exitosa, siendo la respuesta estándar
+                        en páginas web.
+                    </p>
+
+                    <h4>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se
+                         encontró con un error 404? ¿Por qué?</h4>
+                    <p>
+                        El error 404 indica que, aunque el servidor logró establecer conexión exitosamente, el recurso no se ha encontrado.
+                        Esto podría suceder por varias razones, en algunas de ellas, como por ejemplo la eliminación de la página o algún
+                        enlace roto, se responsabiliza al desarrollador por no encontrar los recursos. 
+                    </p>
+
+                    <h4>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se 
+                        encontró con un error 500? ¿Por qué?</h4>
+                    <p>
+                        El código 500 (Internal Server Error) indica un fallo inesperado en el servidor que impide obtener el recurso 
+                        solicitado por el usuario. 
+                    </p>
+
+                    <h4>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 
+                        4 que en HTML5 estén desaprobados.</h4>
+                    <p>
+                        Es una advertencia de que el atributo está obsoleto. Su uso ya no se recomienda y posiblemente se eliminará a futuro.
+                    </p>
+
+                    <h4>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h4>
+                    <ul>
+                        <li>Soporte multimedia nativo</li>
+                        <li>Elementos semánticos</li>
+                        <li>Gráficos y animaciones</li>
+                        <li>Bases de datos</li>
+                        <li>Documento más ligero</li>
+                    </ul>
+
+                    <h4>¿Qué componentes de estructura y estilo tiene una tabla?</h4>
+                    <ul>
+                        <li>Filas</li>
+                        <li>Columnas</li>
+                        <li>Celdas organizadas</li>
+                    </ul>
+
+                    <h4>¿Cuáles son los principales controles de una forma HTML5?</h4>
+                    <ul>
+                        <li>Entradas de texto y datos</li>
+                        <li>Selección y rango</li>
+                        <li>Elementos de selección y texto largo</li>
+                        <li>Botones</li>
+                    </ul>
+
+                    <h4>¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</h4>
+                    <p>
+                       Mi navegador (Google Chrome) tiene una calificación de 526 puntos, teniendo un promedio
+                       de calificación aceptable, teniendo como aspecto critico los componentes we, en donde carece
+                       de HTML imports y Elementos personalizables.
+                    </p>
+
+                    <h4>¿Cuál es el ciclo de vida de los sistemas de información?</h4>
+                    <ul>
+                        <li>Planificación</li>
+                        <li>Análisis</li>
+                        <li>Diseño</li>
+                        <li>Desarrollo</li>
+                        <li>Implementación</li>
+                        <li>Mantenimiento</li>
+                        <li>Retirada</li>
+                    </ul>
+
+                    <h4>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </h4>
+                    <p>
+                        Siendo un método que rompe con los ciclos de CSS con el fin de imponer el propio, no es una acción
+                        tan recomendable, ya que impone su prioridad por sobre los otros estilos del documento.
+                    </p>
+
+                    <h4>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h4>
+                    <p>
+                        En un aspecto de diseño, afecta prinxipalmente la percepción de la página, el como es percibida
+                        por la gente. Además, El elegir una imagen poco favorable puede derivar en problemas de legibilidad
+                        y rendimiento.
+                    </p>
+
+                    <h4>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</h4>
+                    <p>
+                        Siendo ambas medidas disponibles para el mismo uso, realmente en situaciones en donde no sea un requisito la exactitud
+                        del formato del tamaño del texto, es indiferente.
+                        En otro caso, en donde se solicita una medida exacta, la precisión de los pixeles es más confiable.
+                    </p>
+
+                    <h4>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h4>
+                    <p>
+                        Mejora el rendimiento precisamente por la disminución del tamaño del archivo, eliminando todos los caracteres
+                        innecesarios, espacios en blanco, comentarios entre otras cosas sin alterar su funcionalidad original.
+                    </p>
+                </article>
+            </section>
+
+            <aside>
+            </aside>
+          </main>
+          <!-- ........................................................... -->
+        <footer>
+            <p>
+                <a href="https://code.visualstudio.com/"> Visual Studio Code</a>
+            </p>
+        </footer>
+        <!-- ..............................................................-->
+         <script src = "stylee.js"></script>
     </body>
 </html>
 
