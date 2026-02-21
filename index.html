@@ -1,218 +1,389 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body{
-                margin: 0 auto;
-                max-width: 50 em;
-            }
-        </style>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <!--<link rel="stylesheet" href="style-min.css">-->
-        <!-- ............................................................. -->
-         <div class="header">
-            <h1>INTRODUCCIÓN A LAS APLICACIONES WEB</h1>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a las Aplicaciones Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="style-min.css">-->
+</head>
+
+<body>
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🌐 Aplicaciones Web</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contenido">Contenido</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#footer">VISUAL STUDIO</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- ............................................................. -->
-    </head>
+    </nav>
 
-    <body>
-        <!-- ............................................................. -->
-         <nav>
-            <h2> Dante Hernández Ramírez - A01668070</h2>
-         </nav>
-         <!-- ............................................................ -->
-          <main>
-            <section>
-                <article>
-                    <h4>¿Cuál es la diferencia entre internet y la World Wide Web?</h4>
-                    <p>
-                       El internet principalmente está compuesto de infrestructura física, protocolos, 
-                       sistemas de nombres de dominio y la red mundial (WWW). En pocas palabras, la 
-                       World Wide Web está contenida dentro de lo que es internet.
-                    </p>
+    <!-- ====== HEADER ====== -->
+    <header class="bg-primary text-white text-center py-5 mb-4">
+        <div class="container">
+            <h1 class="display-4 fw-bold">INTRODUCCIÓN A LAS APLICACIONES WEB</h1>
+            <p class="lead">Dante Hernández Ramírez - A01668070</p>
+        </div>
+    </header>
 
+    <!-- ====== CONTENIDO PRINCIPAL ====== -->
+    <main class="container" id="contenido">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
 
-                    <h4>¿Cuáles son las partes de una URL?</h4>
-                    <ul>
-                        <li> Protocolo</li>
-                        <li> Subdominio</li>
-                        <li> Dominio</li>
-                        <li> Subcarpeta</li>
-                        <li> Slug</li>
-                        <li> Parámetros</li>
-                    </ul>
+                <!-- Pregunta 1 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuál es la diferencia entre internet y la World Wide Web?</h5>
+                        <p class="card-text">
+                            El internet principalmente está compuesto de infraestructura física, protocolos,
+                            sistemas de nombres de dominio y la red mundial (WWW). En pocas palabras, la
+                            World Wide Web está contenida dentro de lo que es internet.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h4>
-                    <ul>
-                        <li> GET: Solicita un recurso, como un HTML del servidor web</li>
-                        <li> HEAD: Solicita solo el encabezado del archivo, sin el mismo</li>
-                        <li> POST: Se utiliza para enviar un recurso en específico</li>
-                        <li> PUT: Similar a POST, con la diferencia de que este puede ser ejecutado varias veces</li>
-                        <li> PATCH: Modificaciones parciales de un recurso específico</li>
-                        <li> DELETE: Elimina un recurso específico</li>
-                    </ul>
+                <!-- Pregunta 2 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuáles son las partes de una URL?</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Protocolo</li>
+                            <li class="list-group-item">Subdominio</li>
+                            <li class="list-group-item">Dominio</li>
+                            <li class="list-group-item">Subcarpeta</li>
+                            <li class="list-group-item">Slug</li>
+                            <li class="list-group-item">Parámetros</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario
-                         y contraseña en algún sitio? ¿Por qué?</h4>
-                    <p>
-                        POST, ya que los datos que se registran se envían en el cuerpo del HTTP.
-                    </p>
+                <!-- Pregunta 3 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH,
+                            DELETE?</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>GET:</strong> Solicita un recurso, como un HTML del
+                                servidor web</li>
+                            <li class="list-group-item"><strong>HEAD:</strong> Solicita solo el encabezado del archivo,
+                                sin el mismo</li>
+                            <li class="list-group-item"><strong>POST:</strong> Se utiliza para enviar un recurso en
+                                específico</li>
+                            <li class="list-group-item"><strong>PUT:</strong> Similar a POST, con la diferencia de que
+                                este puede ser ejecutado varias veces</li>
+                            <li class="list-group-item"><strong>PATCH:</strong> Modificaciones parciales de un recurso
+                                específico</li>
+                            <li class="list-group-item"><strong>DELETE:</strong> Elimina un recurso específico</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</h4>
-                    <p>
-                        GET, ya que es el principal método de obtención de datos y recursos.
-                    </p>
+                <!-- Pregunta 4 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué método HTTP se debe utilizar al enviar un formulario HTML?</h5>
+                        <p class="card-text">
+                            POST, ya que los datos que se registran se envían en el cuerpo del HTTP.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</h4>
-                    <p>
-                        El código de respuesta 200 indica que la solicitud de datos fue exitosa, siendo la respuesta estándar
-                        en páginas web.
-                    </p>
+                <!-- Pregunta 5 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué método HTTP se utiliza cuando a través de un navegador web se accede
+                            a una página a través de un URL?</h5>
+                        <p class="card-text">
+                            GET, ya que es el principal método de obtención de datos y recursos.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se
-                         encontró con un error 404? ¿Por qué?</h4>
-                    <p>
-                        El error 404 indica que, aunque el servidor logró establecer conexión exitosamente, el recurso no se ha encontrado.
-                        Esto podría suceder por varias razones, en algunas de ellas, como por ejemplo la eliminación de la página o algún
-                        enlace roto, se responsabiliza al desarrollador por no encontrar los recursos. 
-                    </p>
+                <!-- Pregunta 6 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué
+                            significa esto?</h5>
+                        <p class="card-text">
+                            El código de respuesta 200 indica que la solicitud de datos fue exitosa, siendo la respuesta
+                            estándar
+                            en páginas web.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se 
-                        encontró con un error 500? ¿Por qué?</h4>
-                    <p>
-                        El código 500 (Internal Server Error) indica un fallo inesperado en el servidor que impide obtener el recurso 
-                        solicitado por el usuario. 
-                    </p>
+                <!-- Pregunta 7 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Es responsabilidad del desarrollador corregir un sitio web si un usuario
+                            reporta un error 404?</h5>
+                        <p class="card-text">
+                            El error 404 indica que, aunque el servidor logró establecer conexión exitosamente, el
+                            recurso no se ha encontrado.
+                            Esto podría suceder por varias razones, en algunas de ellas, como por ejemplo la eliminación
+                            de la página o algún
+                            enlace roto, se responsabiliza al desarrollador por no encontrar los recursos.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 
-                        4 que en HTML5 estén desaprobados.</h4>
-                    <p>
-                        Es una advertencia de que el atributo está obsoleto. Su uso ya no se recomienda y posiblemente se eliminará a futuro.
-                    </p>
+                <!-- Pregunta 8 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Es responsabilidad del desarrollador corregir un sitio web si un usuario
+                            reporta un error 500?</h5>
+                        <p class="card-text">
+                            El código 500 (Internal Server Error) indica un fallo inesperado en el servidor que impide
+                            obtener el recurso
+                            solicitado por el usuario.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h4>
-                    <ul>
-                        <li>Soporte multimedia nativo</li>
-                        <li>Elementos semánticos</li>
-                        <li>Gráficos y animaciones</li>
-                        <li>Bases de datos</li>
-                        <li>Documento más ligero</li>
-                    </ul>
+                <!-- Pregunta 9 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué significa que un atributo HTML5 esté depreciado (deprecated)?</h5>
+                        <p class="card-text">
+                            Es una advertencia de que el atributo está obsoleto. Su uso ya no se recomienda y
+                            posiblemente se eliminará a futuro.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Qué componentes de estructura y estilo tiene una tabla?</h4>
-                    <ul>
-                        <li>Filas</li>
-                        <li>Columnas</li>
-                        <li>Celdas organizadas</li>
-                    </ul>
+                <!-- Pregunta 10 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Soporte multimedia nativo</li>
+                            <li class="list-group-item">Elementos semánticos</li>
+                            <li class="list-group-item">Gráficos y animaciones</li>
+                            <li class="list-group-item">Bases de datos</li>
+                            <li class="list-group-item">Documento más ligero</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Cuáles son los principales controles de una forma HTML5?</h4>
-                    <ul>
-                        <li>Entradas de texto y datos</li>
-                        <li>Selección y rango</li>
-                        <li>Elementos de selección y texto largo</li>
-                        <li>Botones</li>
-                    </ul>
+                <!-- Pregunta 11 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué componentes de estructura y estilo tiene una tabla?</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Filas</li>
+                            <li class="list-group-item">Columnas</li>
+                            <li class="list-group-item">Celdas organizadas</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</h4>
-                    <p>
-                       Mi navegador (Google Chrome) tiene una calificación de 526 puntos, teniendo un promedio
-                       de calificación aceptable, teniendo como aspecto critico los componentes we, en donde carece
-                       de HTML imports y Elementos personalizables.
-                    </p>
+                <!-- Pregunta 12 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuáles son los principales controles de una forma HTML5?</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Entradas de texto y datos</li>
+                            <li class="list-group-item">Selección y rango</li>
+                            <li class="list-group-item">Elementos de selección y texto largo</li>
+                            <li class="list-group-item">Botones</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Cuál es el ciclo de vida de los sistemas de información?</h4>
-                    <ul>
-                        <li>Planificación</li>
-                        <li>Análisis</li>
-                        <li>Diseño</li>
-                        <li>Desarrollo</li>
-                        <li>Implementación</li>
-                        <li>Mantenimiento</li>
-                        <li>Retirada</li>
-                    </ul>
+                <!-- Pregunta 13 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</h5>
+                        <p class="card-text">
+                            Mi navegador (Google Chrome) tiene una calificación de 526 puntos, teniendo un promedio
+                            de calificación aceptable, teniendo como aspecto crítico los componentes web, en donde
+                            carece
+                            de HTML imports y Elementos personalizables.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </h4>
-                    <p>
-                        Siendo un método que rompe con los ciclos de CSS con el fin de imponer el propio, no es una acción
-                        tan recomendable, ya que impone su prioridad por sobre los otros estilos del documento.
-                    </p>
+                <!-- Pregunta 14 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuál es el ciclo de vida de los sistemas de información?</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Planificación</li>
+                            <li class="list-group-item">Análisis</li>
+                            <li class="list-group-item">Diseño</li>
+                            <li class="list-group-item">Desarrollo</li>
+                            <li class="list-group-item">Implementación</li>
+                            <li class="list-group-item">Mantenimiento</li>
+                            <li class="list-group-item">Retirada</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h4>
-                    <p>
-                        En un aspecto de diseño, afecta prinxipalmente la percepción de la página, el como es percibida
-                        por la gente. Además, El elegir una imagen poco favorable puede derivar en problemas de legibilidad
-                        y rendimiento.
-                    </p>
+                <!-- Pregunta 15 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuál es tu recomendación sobre el uso de !important en CSS?</h5>
+                        <p class="card-text">
+                            Siendo un método que rompe con los ciclos de CSS con el fin de imponer el propio, no es una
+                            acción
+                            tan recomendable, ya que impone su prioridad por sobre los otros estilos del documento.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</h4>
-                    <p>
-                        Siendo ambas medidas disponibles para el mismo uso, realmente en situaciones en donde no sea un requisito la exactitud
-                        del formato del tamaño del texto, es indiferente.
-                        En otro caso, en donde se solicita una medida exacta, la precisión de los pixeles es más confiable.
-                    </p>
+                <!-- Pregunta 16 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Si se pone una imagen de fondo en una página HTML, ¿por qué debe
+                            escogerse con cuidado?</h5>
+                        <p class="card-text">
+                            En un aspecto de diseño, afecta principalmente la percepción de la página, el como es
+                            percibida
+                            por la gente. Además, el elegir una imagen poco favorable puede derivar en problemas de
+                            legibilidad
+                            y rendimiento.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h4>
-                    <p>
-                        Mejora el rendimiento precisamente por la disminución del tamaño del archivo, eliminando todos los caracteres
-                        innecesarios, espacios en blanco, comentarios entre otras cosas sin alterar su funcionalidad original.
-                    </p>
+                <!-- Pregunta 17 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cuál es tu recomendación al elegir las unidades de una propiedad de
+                            estilo entre %, px y pt?</h5>
+                        <p class="card-text">
+                            Siendo ambas medidas disponibles para el mismo uso, realmente en situaciones en donde no sea
+                            un requisito la exactitud
+                            del formato del tamaño del texto, es indiferente.
+                            En otro caso, en donde se solicita una medida exacta, la precisión de los pixeles es más
+                            confiable.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h4>
-                    <p>
-                       Java es un lenguaje compilado y orientado a objetos, mientras que javaScript es un lenguaje
-                       interpretado basado en prototipos, funcional principalmente en desarrollo web. 
-                    </p>
+                <!-- Pregunta 18 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento
+                            del sitio?</h5>
+                        <p class="card-text">
+                            Mejora el rendimiento precisamente por la disminución del tamaño del archivo, eliminando
+                            todos los caracteres
+                            innecesarios, espacios en blanco, comentarios entre otras cosas sin alterar su funcionalidad
+                            original.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h4>
-                    <ul>
-                        <li>new Date(): fecha y hora actual.</li>
-                        <li>getFullYear(): Obtiene el año.</li>
-                        <li>getMonth(): Mes.</li>
-                        <li>getDay(): Dia de la semana.</li>
-                        <li>getTine(): Timestap en milisegundos.</li>
-                    </ul>
+                <!-- Pregunta 19 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h5>
+                        <p class="card-text">
+                            Java es un lenguaje compilado y orientado a objetos, mientras que JavaScript es un lenguaje
+                            interpretado basado en prototipos, funcional principalmente en desarrollo web.
+                        </p>
+                    </div>
+                </div>
 
-                    <h4>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h4>
-                    <ul>
-                        <li>push(): Añade uno o más elementos al final de un arreglo</li>
-                        <li>pop(): Elimina el último elemento de un arreglo</li>
-                        <li>shift(): Elimina el primer elemento de un arreglo y lo devuelve</li>
-                        <li>map(): Crea un nuevo arreglo con los resultados de aplicar una función a cada uno de los elementos.</li>
-                        <li>filter(): Crea un nuevo arreglo con todos los elementos que cumplan la condición implementada.</li>
-                    </ul>
+                <!-- Pregunta 20 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué métodos tiene el objeto Date? (Menciona al menos 5)</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><code>new Date()</code>: fecha y hora actual.</li>
+                            <li class="list-group-item"><code>getFullYear()</code>: Obtiene el año.</li>
+                            <li class="list-group-item"><code>getMonth()</code>: Mes.</li>
+                            <li class="list-group-item"><code>getDay()</code>: Día de la semana.</li>
+                            <li class="list-group-item"><code>getTime()</code>: Timestamp en milisegundos.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Cómo se declara una variable con alcance local dentro de una función?</h4>
-                    <p>
-                        Se define diréctamente dentro del cuerpo de una función o bloque de código.
-                    </p>
+                <!-- Pregunta 21 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué métodos tienen los arreglos? (Menciona al menos 5)</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><code>push()</code>: Añade uno o más elementos al final de un
+                                arreglo</li>
+                            <li class="list-group-item"><code>pop()</code>: Elimina el último elemento de un arreglo
+                            </li>
+                            <li class="list-group-item"><code>shift()</code>: Elimina el primer elemento de un arreglo y
+                                lo devuelve</li>
+                            <li class="list-group-item"><code>map()</code>: Crea un nuevo arreglo con los resultados de
+                                aplicar una función a cada uno de los elementos.</li>
+                            <li class="list-group-item"><code>filter()</code>: Crea un nuevo arreglo con todos los
+                                elementos que cumplan la condición implementada.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h4>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h4>
-                    <p>
-                        Disminuye la legibilidad, dificulta la depuración y reduce la modularidad de código.
-                    </p>
+                <!-- Pregunta 22 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Cómo se declara una variable con alcance local dentro de una función?
+                        </h5>
+                        <p class="card-text">
+                            Se define directamente dentro del cuerpo de una función o bloque de código.
+                        </p>
+                    </div>
+                </div>
 
-                    <h3>MATERIAL DESIGN</h3>
-                    <p>
-                        Lenguaje de diseño integral creado por Google en 2014. Unifica el desarrollo en aplicaciones móviles y web.
-                        utiliza superficies, sombras, colores vivos y animaciones para crear interfaces táctiles, intuitivas y consistentes.
-                    </p>
+                <!-- Pregunta 23 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Qué implicaciones tiene utilizar variables globales dentro de funciones?
+                        </h5>
+                        <p class="card-text">
+                            Disminuye la legibilidad, dificulta la depuración y reduce la modularidad de código.
+                        </p>
+                    </div>
+                </div>
 
-                </article>
-            </section>
+                <!-- Material Design -->
+                <div class="card mb-3 shadow-sm border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">MATERIAL DESIGN</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Lenguaje de diseño integral creado por Google en 2014. Unifica el desarrollo en aplicaciones
+                            móviles y web.
+                            Utiliza superficies, sombras, colores vivos y animaciones para crear interfaces táctiles,
+                            intuitivas y consistentes.
+                        </p>
+                    </div>
+                </div>
 
-            <aside>
-            </aside>
-          </main>
-          <!-- ........................................................... -->
-        <footer>
-            <p>
-                <a href="https://code.visualstudio.com/"> Visual Studio Code</a>
-            </p>
-        </footer>
-        <!-- ..............................................................-->
-         <script src = "stylee.js"></script>
-    </body>
+            </div>
+        </div>
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer id="footer" class="bg-dark text-white text-center py-3 mt-4">
+        <p class="mb-0">
+            Hecho con <a href="https://code.visualstudio.com/" class="text-info text-decoration-none">Visual Studio
+                Code</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JrDAJLFnGs7P6JXkLMOm1qmHqPtBjCmFP/5tcGxe0EDY3jnl2TvFqDMm3wR60iF"
+        crossorigin="anonymous"></script>
+    <script src="stylee.js"></script>
+</body>
+
 </html>
-
