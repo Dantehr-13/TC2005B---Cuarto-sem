@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow — Acerca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --border: #2a2a2a;
+            --accent: #c8f135;
+            --text: #f0f0f0;
+            --muted: #888;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+        nav ul { list-style: none; display: flex; gap: 32px; }
+        nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        nav a:hover, nav a.active { color: var(--text); }
+
+        main {
+            flex: 1;
+            padding: 80px 48px;
+            max-width: 680px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 32px;
+        }
+
+        h1 span { color: var(--accent); }
+
+        .desc {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 48px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .info-card .label {
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .info-card .value {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .routes-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .route-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .method {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            min-width: 48px;
+            text-align: center;
+        }
+
+        .method-get  { background: rgba(74,222,128,0.15); color: #4ade80; }
+        .method-post { background: rgba(250,204,21,0.15); color: #facc15; }
+
+        .route-path { font-family: monospace; font-size: 0.9rem; color: var(--accent); }
+        .route-desc { font-size: 0.85rem; color: var(--muted); margin-left: auto; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+        }
+        footer span, footer a { color: var(--muted); font-size: 0.82rem; text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TaskFlow</div>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/tareas">Mis Tareas</a></li>
+            <li><a href="/acerca" class="active">Acerca</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <span class="tag">Acerca de</span>
+        <h1>Task<span>Flow</span></h1>
+        <p class="desc">
+            Aplicación web desarrollada con Node.js puro para el Laboratorio 08 de TC2005B.
+            Permite agregar tareas con prioridad, guardarlas en el servidor y visualizarlas en tiempo real.
+            Sin frameworks, sin base de datos — solo HTTP, archivos y lógica limpia.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">Materia</div>
+                <div class="value">TC2005B</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Laboratorio</div>
+                <div class="value">Lab 08</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Tecnología</div>
+                <div class="value">Node.js</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Puerto</div>
+                <div class="value">:3000</div>
+            </div>
+        </div>
+
+        <div class="routes-section">
+            <h2>Rutas del servidor</h2>
+            <div class="route-item">
+                <span class="method method-get">GET</span>
+                <span class="route-path">/</span>
+                <span class="route-desc">Página principal</span>
+            </div>
+            <div class="route-item">
+                <span class="method method-get">GET</span>
+                <span class="route-path">/tareas</span>
+                <span class="route-desc">Ver tareas guardadas</span>
+            </div>
+            <div class="route-item">
+                <span class="method method-get">GET</span>
+                <span class="route-path">/acerca</span>
+                <span class="route-desc">Esta página</span>
+            </div>
+            <div class="route-item">
+                <span class="method method-post">POST</span>
+                <span class="route-path">/agregar</span>
+                <span class="route-desc">Guardar nueva tarea</span>
+            </div>
+            <div class="route-item">
+                <span class="method method-get">GET</span>
+                <span class="route-path">/api/tareas</span>
+                <span class="route-desc">Tareas en texto plano</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <span>TC2005B — Lab 08</span>
+        <a href="/">← Volver al inicio</a>
+    </footer>
+
+</body>
+</html>

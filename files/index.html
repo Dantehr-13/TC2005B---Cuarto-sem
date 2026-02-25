@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow — Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --border: #2a2a2a;
+            --accent: #c8f135;
+            --accent-dim: #8faa1f;
+            --text: #f0f0f0;
+            --muted: #888;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active { color: var(--text); }
+
+        /* HERO */
+        .hero {
+            padding: 80px 48px 40px;
+            max-width: 760px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 2px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* FORM SECTION */
+        .form-section {
+            flex: 1;
+            padding: 40px 48px 80px;
+            max-width: 760px;
+            width: 100%;
+        }
+
+        .form-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .form-card h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            color: var(--text);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            outline: none;
+            appearance: none;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: var(--accent);
+        }
+
+        input[type="text"]::placeholder { color: #444; }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .priority-option input { display: none; }
+
+        .priority-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
+            transition: all 0.15s;
+            color: var(--muted);
+        }
+
+        .priority-option input:checked + label {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(200, 241, 53, 0.06);
+        }
+
+        .priority-option label:hover { border-color: #444; color: var(--text); }
+
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .dot-low { background: #4ade80; }
+        .dot-normal { background: #facc15; }
+        .dot-high { background: #f87171; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: #000;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .btn-submit:hover { opacity: 0.88; }
+        .btn-submit:active { transform: scale(0.99); }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer span { color: var(--muted); font-size: 0.82rem; }
+        footer a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+        footer a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TaskFlow</div>
+        <ul>
+            <li><a href="/" class="active">Inicio</a></li>
+            <li><a href="/tareas">Mis Tareas</a></li>
+            <li><a href="/acerca">Acerca</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-tag">To-do App</span>
+        <h1>Organiza tu<br><span>día</span> sin ruido.</h1>
+        <p>Agrega tus tareas pendientes y lleva el control de lo que importa.</p>
+    </div>
+
+    <div class="form-section">
+        <div class="form-card">
+            <h2>+ Nueva tarea</h2>
+            <form action="/agregar" method="POST">
+                <div class="field">
+                    <label for="tarea">Descripción</label>
+                    <input type="text" id="tarea" name="tarea" placeholder="¿Qué necesitas hacer?" required autocomplete="off">
+                </div>
+                <div class="field">
+                    <label>Prioridad</label>
+                    <div class="priority-grid">
+                        <div class="priority-option">
+                            <input type="radio" name="prioridad" id="p-baja" value="Baja">
+                            <label for="p-baja"><span class="dot dot-low"></span> Baja</label>
+                        </div>
+                        <div class="priority-option">
+                            <input type="radio" name="prioridad" id="p-normal" value="Normal" checked>
+                            <label for="p-normal"><span class="dot dot-normal"></span> Normal</label>
+                        </div>
+                        <div class="priority-option">
+                            <input type="radio" name="prioridad" id="p-alta" value="Alta">
+                            <label for="p-alta"><span class="dot dot-high"></span> Alta</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Agregar tarea →</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <span>TC2005B — Lab 08</span>
+        <a href="/tareas">Ver todas las tareas →</a>
+    </footer>
+
+</body>
+</html>
