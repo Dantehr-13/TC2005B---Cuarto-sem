@@ -1,0 +1,25 @@
+{
+  "name": "lab11",
+  "version": "1.0.0",
+  "description": "laboratorio 11, express",
+  "homepage": "https://github.com/Dantehr-13/TC2005B---Cuarto-sem#readme",
+  "bugs": {
+    "url": "https://github.com/Dantehr-13/TC2005B---Cuarto-sem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dantehr-13/TC2005B---Cuarto-sem.git"
+  },
+  "license": "MIT",
+  "author": "Dante Hernandez Ramirez",
+  "type": "commonjs",
+  "main": "stylee.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1"
+  }
+}
