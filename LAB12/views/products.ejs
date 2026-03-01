@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<%- include('includes/head.ejs') %>
+<body>
+
+<%- include('includes/nav.ejs') %>
+
+<h1>Productos</h1>
+
+<% if (productos.length > 0) { %>
+    <ul>
+        <% for (let producto of productos) { %>
+            <li><%= producto %></li>
+        <% } %>
+    </ul>
+<% } else { %>
+    <p>No hay productos registrados</p>
+<% } %>
+
+<%- include('includes/footer.ejs') %>
+
+</body>
+</html>
