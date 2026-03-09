@@ -1,0 +1,42 @@
+/*
+1
+*/
+SELECT nombre, SUM(sueldo) AS ingresoTotal
+FROM Elenco
+GROUP BY nombre;
+
+/*
+2
+*/
+SELECT nomestudio, SUM(presupuesto) AS total
+FROM Película
+WHERE año BETWEEN 1980 AND 1989
+GROUP BY nomestudio;
+
+/*
+3
+*/
+SELECT A.nombre, AVG(E.sueldo) AS sueldo_promedio
+FROM Actor A
+JOIN Elenco E ON A.nombre = E.nombre
+WHERE A.sexo = 'M'
+GROUP BY A.nombre
+HAVING AVG(E.sueldo) > 5000000;
+
+/*
+4
+*/
+SELECT titulo, año
+FROM Película
+WHERE presupuesto = (
+    SELECT MIN(presupuesto)
+    FROM Película
+);
+
+/*
+5
+*/
+SELECT MAX(E.sueldo) AS mejor_sueldo
+FROM Actor A
+JOIN Elenco E ON A.nombre = E.nombre
+WHERE A.sexo = 'F';
