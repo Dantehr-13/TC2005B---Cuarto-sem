@@ -5,9 +5,13 @@ exports.get_add = (request, response, next) => {
 };
 
 exports.post_add = (request, response, next) => {
-    const personaje = new Personaje(request.body.nombre, 
+    const personaje = new Personaje(request.body.nombre,
         request.body.descripcion, request.body.tipo, request.body.imagen);
     personaje.save();
+
+    response.setHeader('Set-Cookie', `ultimo_personaje=${personaje.nombre}; HttpOnly`);
+    request.flash('exito', `El personaje ${personaje.nombre} fue creado con éxito.`);
+
     response.redirect('/personajes');
 };
 
@@ -18,5 +22,5 @@ exports.get_old = (request, response, next) => {
 
 exports.get_list = (request, response, next) => {
     const personajes = Personaje.fetchAll();
-    response.render('list', {personajes: personajes}); 
+    response.render('list', { personajes: personajes });
 };

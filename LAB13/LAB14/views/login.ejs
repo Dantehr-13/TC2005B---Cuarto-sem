@@ -1,0 +1,23 @@
+<%- include('includes/_header') %>
+
+<form action="/users/login" method="POST">
+    <div class="field">
+        <label class="label">Usuario</label>
+        <div class="control">
+            <input class="input" type="text" name="username" placeholder="Tu usuario" required>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Contraseña</label>
+        <div class="control">
+            <input class="input" type="password" name="password" placeholder="Tu contraseña" required>
+        </div>
+    </div>
+
+    <div class="control">
+        <button class="button is-link" type="submit">Ingresar</button>
+    </div>
+</form>
+
+<%- include('includes/_footer') %>

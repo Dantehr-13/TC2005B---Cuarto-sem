@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello Bulma!</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/personajes">
+            <h1 class="title">League of Legends</h1>
+          </a>
+        </div>
+        <div class="navbar-menu is-active">
+          <div class="navbar-end">
+            <% if (isLoggedIn) { %>
+              <div class="navbar-item">
+                <span class="tag is-info is-light">Conectado como: <%= usuario %></span>
+              </div>
+              <a class="navbar-item button is-danger is-light" href="/users/logout">
+                Cerrar Sesión
+              </a>
+              <% } else { %>
+                <a class="navbar-item button is-primary is-light" href="/users/login">
+                  Iniciar Sesión
+                </a>
+                <% } %>
+          </div>
+        </div>
+      </nav>
+
+      <% if (ultimo_personaje !='' ) { %>
+        <div class="notification is-light">
+          El último personaje creado fue: <strong>
+            <%= ultimo_personaje %>
+          </strong>
+        </div>
+        <% } %>
+
+          <% if (mensajes_exito && mensajes_exito.length> 0) { %>
+            <div class="notification is-success is-light">
+              <%= mensajes_exito[0] %>
+            </div>
+            <% } %>
+
+              <% if (mensajes_error && mensajes_error.length> 0) { %>
+                <div class="notification is-danger is-light">
+                  <%= mensajes_error[0] %>
+                </div>
+                <% } %>
+
+                  <p class="subtitle mt-4">
+                    My first website with <strong>Bulma</strong>!
+                  </p>
