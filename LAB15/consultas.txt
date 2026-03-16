@@ -1,0 +1,31 @@
+CREATE TABLE materiales (
+  clave       INT           NOT NULL,
+  descripcion VARCHAR(40)   NOT NULL,
+  precio      FLOAT         NOT NULL,
+  impuesto    FLOAT         NOT NULL,
+  PRIMARY KEY (clave)
+);
+
+CREATE TABLE proveedores (
+  rfc         VARCHAR(15)   NOT NULL,
+  razonsocial VARCHAR(40)   NOT NULL,
+  PRIMARY KEY (rfc)
+);
+
+CREATE TABLE proyectos (
+  numero       INT          NOT NULL,
+  denominacion VARCHAR(40)  NOT NULL,
+  PRIMARY KEY (numero)
+);
+
+CREATE TABLE entregan (
+  clave    INT          NOT NULL,
+  rfc      VARCHAR(15)  NOT NULL,
+  numero   INT          NOT NULL,
+  fecha    DATE         NOT NULL,
+  cantidad INT          NOT NULL,
+  PRIMARY KEY (clave, rfc, numero, fecha),
+  FOREIGN KEY (clave)  REFERENCES materiales(clave)  ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (rfc)    REFERENCES proveedores(rfc)   ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (numero) REFERENCES proyectos(numero)  ON DELETE CASCADE ON UPDATE CASCADE
+);
