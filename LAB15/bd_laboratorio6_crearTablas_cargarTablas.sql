@@ -1,31 +1,102 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2021 a las 18:23:08
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+CREATE TABLE `materiales` (
+  `clave` int(11) NOT NULL,
+  `descripcion` varchar(40) COLLATE utf8_spanish2_ci NOT NULL,
+  `precio` float NOT NULL,
+  `impuesto` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+INSERT INTO `materiales` (`clave`, `descripcion`, `precio`, `impuesto`) VALUES
+(1000, 'Varilla 3/16', 100, 10),
+(1010, 'Varilla 4/32', 115, 11.5),
+(1020, 'Varilla 3/17', 130, 13),
+(1030, 'Varilla 4/33', 145, 14.5),
+(1040, 'Varilla 3/18', 160, 16),
+(1050, 'Varilla 4/34', 175, 17.5),
+(1060, 'Varilla 3/19', 190, 19),
+(1070, 'Varilla 4/35', 205, 20.5),
+(1080, 'Ladrillos rojos', 50, 5),
+(1090, 'Ladrillos grises', 35, 3.5),
+(1100, 'Block', 30, 3),
+(1110, 'Megablock', 40, 4),
+(1120, 'Sillar rosa', 100, 10),
+(1130, 'Sillar gris', 110, 11),
+(1140, 'Cantera blanca', 200, 20),
+(1150, 'Cantera gris', 1210, 121),
+(1160, 'Cantera rosa', 1420, 142),
+(1170, 'Cantera amarilla', 230, 23),
+(1180, 'Recubrimiento P1001', 200, 20),
+(1190, 'Recubrimiento P1010', 220, 22),
+(1200, 'Recubrimiento P1019', 240, 24),
+(1210, 'Recubrimiento P1028', 250, 25),
+(1220, 'Recubrimiento P1037', 280, 28),
+(1230, 'Cemento ', 300, 30),
+(1240, 'Arena', 200, 20),
+(1250, 'Grava', 100, 10),
+(1260, 'Gravilla', 90, 9),
+(1270, 'Tezontle', 80, 8),
+(1280, 'Tepetate', 34, 3.4),
+(1290, 'Tubería 3.5', 200, 20),
+(1300, 'Tubería 4.3', 210, 21),
+(1310, 'Tubería 3.6', 220, 22),
+(1320, 'Tubería 4.4', 230, 23),
+(1330, 'Tubería 3.7', 240, 24),
+(1340, 'Tubería 4.5', 250, 25),
+(1350, 'Tubería 3.8', 260, 26),
+(1360, 'Pintura C1010', 125, 12.5),
+(1370, 'Pintura B1020', 125, 12.5),
+(1380, 'Pintura C1011', 725, 72.5),
+(1390, 'Pintura B1021', 125, 12.5),
+(1400, 'Pintura C1011', 125, 12.5),
+(1410, 'Pintura B1021', 125, 12.5),
+(1420, 'Pintura C1012', 125, 12.5),
+(1430, 'Pintura B1022', 125, 12.5),
+(2000, 'Jabón', 125, 12.5);
 
---
--- Base de datos: `rcortese`
---
+CREATE TABLE `proveedores` (
+  `rfc` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
+  `razonsocial` varchar(40) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
--- --------------------------------------------------------
+INSERT INTO `proveedores` (`rfc`, `razonsocial`) VALUES
+('AAAA800101', 'La fragua'),
+('BBBB800101', 'Oviedo'),
+('CCCC800101', 'La Ferre'),
+('DDDD800101', 'Cecoferre'),
+('EEEE800101', 'Alvin'),
+('FFFF800101', 'Comex'),
+('GGGG800101', 'Tabiquera del centro'),
+('HHHH800101', 'Tubasa');
 
---
--- Estructura de tabla para la tabla `entregan`
---
+CREATE TABLE `proyectos` (
+  `numero` int(11) NOT NULL,
+  `denominacion` varchar(40) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+INSERT INTO `proyectos` (`numero`, `denominacion`) VALUES
+(5000, 'Vamos Mexico'),
+(5001, 'Aztecon'),
+(5002, 'CIT Campeche'),
+(5003, 'Mexico sin ti no estamos completos'),
+(5004, 'Educando en Coahuila'),
+(5005, 'Infonavit Durango'),
+(5006, 'Reconstrucción del templo de Guadalupe'),
+(5007, 'Construcción de plaza Magnolias'),
+(5008, 'Televisa en acción'),
+(5009, 'Disco Atlantic'),
+(5010, 'Construcción de Hospital Infantil'),
+(5011, 'Remodelación de aulas del IPP'),
+(5012, 'Restauración de instalaciones del CEA'),
+(5013, 'Reparación de la plaza Sonora'),
+(5014, 'Remodelación de Soriana'),
+(5015, 'CIT Yucatan'),
+(5016, 'Ampliación de la carretera a la huasteca'),
+(5017, 'Reparación de la carretera del sol'),
+(5018, 'Tu cambio por la educación'),
+(5019, 'Queretaro limpio');
 
 CREATE TABLE `entregan` (
   `clave` int(11) NOT NULL,
@@ -34,10 +105,6 @@ CREATE TABLE `entregan` (
   `fecha` date NOT NULL,
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `entregan`
---
 
 INSERT INTO `entregan` (`clave`, `rfc`, `numero`, `fecha`, `cantidad`) VALUES
 (1000, 'AAAA800101', 5000, '2001-12-13', 165),
@@ -128,175 +195,22 @@ INSERT INTO `entregan` (`clave`, `rfc`, `numero`, `fecha`, `cantidad`) VALUES
 (1430, 'DDDD800101', 5003, '2005-04-30', 576),
 (1430, 'DDDD800101', 5007, '2000-03-02', 13);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `materiales`
---
-
-CREATE TABLE `materiales` (
-  `clave` int(11) NOT NULL,
-  `descripcion` varchar(40) COLLATE utf8_spanish2_ci NOT NULL,
-  `precio` float NOT NULL,
-  `impuesto` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `materiales`
---
-
-INSERT INTO `materiales` (`clave`, `descripcion`, `precio`, `impuesto`) VALUES
-(1000, 'Varilla 3/16', 100, 10),
-(1010, 'Varilla 4/32', 115, 11.5),
-(1020, 'Varilla 3/17', 130, 13),
-(1030, 'Varilla 4/33', 145, 14.5),
-(1040, 'Varilla 3/18', 160, 16),
-(1050, 'Varilla 4/34', 175, 17.5),
-(1060, 'Varilla 3/19', 190, 19),
-(1070, 'Varilla 4/35', 205, 20.5),
-(1080, 'Ladrillos rojos', 50, 5),
-(1090, 'Ladrillos grises', 35, 3.5),
-(1100, 'Block', 30, 3),
-(1110, 'Megablock', 40, 4),
-(1120, 'Sillar rosa', 100, 10),
-(1130, 'Sillar gris', 110, 11),
-(1140, 'Cantera blanca', 200, 20),
-(1150, 'Cantera gris', 1210, 121),
-(1160, 'Cantera rosa', 1420, 142),
-(1170, 'Cantera amarilla', 230, 23),
-(1180, 'Recubrimiento P1001', 200, 20),
-(1190, 'Recubrimiento P1010', 220, 22),
-(1200, 'Recubrimiento P1019', 240, 24),
-(1210, 'Recubrimiento P1028', 250, 25),
-(1220, 'Recubrimiento P1037', 280, 28),
-(1230, 'Cemento ', 300, 30),
-(1240, 'Arena', 200, 20),
-(1250, 'Grava', 100, 10),
-(1260, 'Gravilla', 90, 9),
-(1270, 'Tezontle', 80, 8),
-(1280, 'Tepetate', 34, 3.4),
-(1290, 'Tubería 3.5', 200, 20),
-(1300, 'Tubería 4.3', 210, 21),
-(1310, 'Tubería 3.6', 220, 22),
-(1320, 'Tubería 4.4', 230, 23),
-(1330, 'Tubería 3.7', 240, 24),
-(1340, 'Tubería 4.5', 250, 25),
-(1350, 'Tubería 3.8', 260, 26),
-(1360, 'Pintura C1010', 125, 12.5),
-(1370, 'Pintura B1020', 125, 12.5),
-(1380, 'Pintura C1011', 725, 72.5),
-(1390, 'Pintura B1021', 125, 12.5),
-(1400, 'Pintura C1011', 125, 12.5),
-(1410, 'Pintura B1021', 125, 12.5),
-(1420, 'Pintura C1012', 125, 12.5),
-(1430, 'Pintura B1022', 125, 12.5),
-(2000, 'Jabón', 125, 12.5);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `proveedores`
---
-
-CREATE TABLE `proveedores` (
-  `rfc` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `razonsocial` varchar(40) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `proveedores`
---
-
-INSERT INTO `proveedores` (`rfc`, `razonsocial`) VALUES
-('AAAA800101', 'La fragua'),
-('BBBB800101', 'Oviedo'),
-('CCCC800101', 'La Ferre'),
-('DDDD800101', 'Cecoferre'),
-('EEEE800101', 'Alvin'),
-('FFFF800101', 'Comex'),
-('GGGG800101', 'Tabiquera del centro'),
-('HHHH800101', 'Tubasa');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `proyectos`
---
-
-CREATE TABLE `proyectos` (
-  `numero` int(11) NOT NULL,
-  `denominacion` varchar(40) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `proyectos`
---
-
-INSERT INTO `proyectos` (`numero`, `denominacion`) VALUES
-(5000, 'Vamos Mexico'),
-(5001, 'Aztecon'),
-(5002, 'CIT Campeche'),
-(5003, 'Mexico sin ti no estamos completos'),
-(5004, 'Educando en Coahuila'),
-(5005, 'Infonavit Durango'),
-(5006, 'Reconstrucción del templo de Guadalupe'),
-(5007, 'Construcción de plaza Magnolias'),
-(5008, 'Televisa en acción'),
-(5009, 'Disco Atlantic'),
-(5010, 'Construcción de Hospital Infantil'),
-(5011, 'Remodelación de aulas del IPP'),
-(5012, 'Restauración de instalaciones del CEA'),
-(5013, 'Reparación de la plaza Sonora'),
-(5014, 'Remodelación de Soriana'),
-(5015, 'CIT Yucatan'),
-(5016, 'Ampliación de la carretera a la huasteca'),
-(5017, 'Reparación de la carretera del sol'),
-(5018, 'Tu cambio por la educación'),
-(5019, 'Queretaro limpio');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `entregan`
---
 ALTER TABLE `entregan`
   ADD PRIMARY KEY (`clave`,`rfc`,`numero`,`fecha`),
   ADD KEY `rfc` (`rfc`),
   ADD KEY `numero` (`numero`);
 
---
--- Indices de la tabla `materiales`
---
 ALTER TABLE `materiales`
   ADD PRIMARY KEY (`clave`);
 
---
--- Indices de la tabla `proveedores`
---
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`rfc`);
 
---
--- Indices de la tabla `proyectos`
---
 ALTER TABLE `proyectos`
   ADD PRIMARY KEY (`numero`);
 
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `entregan`
---
 ALTER TABLE `entregan`
   ADD CONSTRAINT `entregan_ibfk_1` FOREIGN KEY (`rfc`) REFERENCES `proveedores` (`rfc`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `entregan_ibfk_2` FOREIGN KEY (`numero`) REFERENCES `proyectos` (`numero`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `entregan_ibfk_3` FOREIGN KEY (`clave`) REFERENCES `materiales` (`clave`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

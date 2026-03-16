@@ -1,5 +1,3 @@
--- Volcado de datos de la tala de entregan  -----
-
 INSERT INTO `materiales` (`clave`, `descripcion`, `precio`, `impuesto`) VALUES
 (1000, 'Varilla 3/16', 100, 10),
 (1010, 'Varilla 4/32', 115, 11.5),
@@ -47,9 +45,6 @@ INSERT INTO `materiales` (`clave`, `descripcion`, `precio`, `impuesto`) VALUES
 (1430, 'Pintura B1022', 125, 12.5),
 (2000, 'Jabón', 125, 12.5);
 
--- --------------------------------------------------------
-
-
 INSERT INTO `proveedores` (`rfc`, `razonsocial`) VALUES
 ('AAAA800101', 'La fragua'),
 ('BBBB800101', 'Oviedo'),
@@ -59,10 +54,6 @@ INSERT INTO `proveedores` (`rfc`, `razonsocial`) VALUES
 ('FFFF800101', 'Comex'),
 ('GGGG800101', 'Tabiquera del centro'),
 ('HHHH800101', 'Tubasa');
-
---
--- Volcado de datos para la tabla `proyectos`
---
 
 INSERT INTO `proyectos` (`numero`, `denominacion`) VALUES
 (5000, 'Vamos Mexico'),
@@ -85,11 +76,6 @@ INSERT INTO `proyectos` (`numero`, `denominacion`) VALUES
 (5017, 'Reparación de la carretera del sol'),
 (5018, 'Tu cambio por la educación'),
 (5019, 'Queretaro limpio');
-
-
---
--- Volcado de datos para la tabla `entregan`
---
 
 INSERT INTO `entregan` (`clave`, `rfc`, `numero`, `fecha`, `cantidad`) VALUES
 (1000, 'AAAA800101', 5000, '2001-12-13', 165),
@@ -179,5 +165,3 @@ INSERT INTO `entregan` (`clave`, `rfc`, `numero`, `fecha`, `cantidad`) VALUES
 (1420, 'CCCC800101', 5008, '1999-05-05', 278),
 (1430, 'DDDD800101', 5003, '2005-04-30', 576),
 (1430, 'DDDD800101', 5007, '2000-03-02', 13);
-
-

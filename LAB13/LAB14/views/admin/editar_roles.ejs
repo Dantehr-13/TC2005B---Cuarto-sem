@@ -1,0 +1,35 @@
+<%- include('../includes/_header') %>
+
+    <h2 class="title is-4">Editar Roles de Usuario: <%= targetUser %>
+    </h2>
+
+    <form action="/admin/usuarios/<%= targetUser %>/roles" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div class="field">
+            <label class="label">Selecciona los roles:</label>
+            <div class="control">
+                <% for (let rol of roles) { %>
+                    <label class="checkbox is-block mt-2">
+                        <input type="checkbox" name="roles" value="<%= rol.id_rol %>"
+                            <%=userRoleIds.includes(rol.id_rol) ? 'checked' : '' %>>
+                        <%= rol.descripcion_rol %>
+                    </label>
+                    <% } %>
+            </div>
+        </div>
+
+        <div class="field is-grouped mt-5">
+            <div class="control">
+                <button type="submit" class="button is-primary">Guardar Cambios</button>
+            </div>
+            <div class="control">
+                <a href="/admin/usuarios" class="button is-light">Cancelar</a>
+            </div>
+        </div>
+    </form>
+
+    </div>
+    </section>
+
+    <%- include('../includes/_footer') %>

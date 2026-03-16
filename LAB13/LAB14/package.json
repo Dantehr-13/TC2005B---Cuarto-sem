@@ -24,11 +24,14 @@
   },
   "homepage": "https://github.com/ejuarezp/tc2005b_lol#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
+    "csurf": "^1.11.0",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
-    "express-session": "^1.19.0"
+    "express-session": "^1.19.0",
+    "mysql2": "^3.20.0"
   }
 }

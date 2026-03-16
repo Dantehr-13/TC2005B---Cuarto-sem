@@ -1,29 +1,48 @@
 <%- include('includes/_header') %>
 
+    <% if (permisos && permisos.includes('crear_personaje')) { %>
         <a class="button is-primary" href="/personajes/new">Nuevo personaje</a>
-        <div class="columns">
-
-        <% if(personajes.length == 0) { %>
-            <div class="column">
-                No hay personajes registrados.
-            </div>
-        <% } else { %>
-
-            <% for (let personaje of personajes) { %>
-
-                <div class="column">
-                    <%= personaje.nombre %>
-                    <figure class="image">
-                        <img class="is-rounded" src="<%= personaje.imagen %>" />
-                    </figure>
-                </div>
-                    
-            <% } %>
-            
         <% } %>
+            <div class="columns is-multiline mt-4">
 
-        </div>
-    </div>
-</section>
+                <% if(personajes.length==0) { %>
+                    <div class="column">
+                        No hay personajes registrados.
+                    </div>
+                    <% } else { %>
 
-<%- include('includes/_footer') %>
+                        <% for (let personaje of personajes) { %>
+
+                            <div class="column is-one-third">
+                                <div class="card">
+                                    <% if (personaje.imagen) { %>
+                                        <div class="card-image">
+                                            <figure class="image">
+                                                <img src="<%= personaje.imagen %>" alt="<%= personaje.nombre %>">
+                                            </figure>
+                                        </div>
+                                        <% } %>
+                                            <div class="card-content">
+                                                <p class="title is-5">
+                                                    <%= personaje.nombre %>
+                                                </p>
+                                                <span class="tag is-info">
+                                                    <%= personaje.tipo %>
+                                                </span>
+                                            </div>
+                                            <footer class="card-footer">
+                                                <a href="/personajes/<%= personaje.id %>" class="card-footer-item">Ver
+                                                    detalle</a>
+                                            </footer>
+                                </div>
+                            </div>
+
+                            <% } %>
+
+                                <% } %>
+
+            </div>
+            </div>
+            </section>
+
+            <%- include('includes/_footer') %>

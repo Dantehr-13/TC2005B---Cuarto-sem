@@ -1,0 +1,56 @@
+<%- include('../includes/_header') %>
+
+    <h2 class="title is-4">Materiales</h2>
+
+    <% if (permisos && permisos.includes('crear_material')) { %>
+        <div class="mb-4">
+            <a href="/materiales/new" class="button is-primary">Registrar Material</a>
+        </div>
+        <% } %>
+
+            <% if(materiales.length==0) { %>
+                <div class="notification is-warning is-light">
+                    No hay materiales registrados.
+                </div>
+                <% } else { %>
+                    <table class="table is-striped is-hoverable is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Clave</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Impuesto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let material of materiales) { %>
+                                <tr>
+                                    <td>
+                                        <%= material.clave %>
+                                    </td>
+                                    <td>
+                                        <%= material.descripcion %>
+                                    </td>
+                                    <td>$<%= material.precio.toFixed(2) %>
+                                    </td>
+                                    <td>$<%= material.impuesto.toFixed(2) %>
+                                    </td>
+                                    <td>
+                                        <a href="/materiales/<%= material.clave %>"
+                                            class="button is-small is-info">Ver</a>
+                                        <% if (permisos && permisos.includes('editar_material')) { %>
+                                            <a href="/materiales/<%= material.clave %>/edit"
+                                                class="button is-small is-warning">Editar</a>
+                                            <% } %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                    <% } %>
+
+                        </div>
+                        </section>
+
+                        <%- include('../includes/_footer') %>

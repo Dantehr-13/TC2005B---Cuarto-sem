@@ -1,0 +1,45 @@
+<%- include('../includes/_header') %>
+
+    <h2 class="title is-4">Detalle del Material</h2>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="content">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Clave</th>
+                            <td>
+                                <%= material.clave %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Descripción</th>
+                            <td>
+                                <%= material.descripcion %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Precio</th>
+                            <td>$<%= material.precio.toFixed(2) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Impuesto</th>
+                            <td>$<%= material.impuesto.toFixed(2) %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer class="card-footer">
+            <a href="/materiales/<%= material.clave %>/edit" class="card-footer-item has-text-warning">Editar</a>
+            <a href="/materiales" class="card-footer-item">Volver a la lista</a>
+        </footer>
+    </div>
+
+    </div>
+    </section>
+
+    <%- include('../includes/_footer') %>

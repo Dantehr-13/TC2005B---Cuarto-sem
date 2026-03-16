@@ -1,23 +1,79 @@
 <%- include('includes/_header') %>
 
-<form action="/users/login" method="POST">
-    <div class="field">
-        <label class="label">Usuario</label>
-        <div class="control">
-            <input class="input" type="text" name="username" placeholder="Tu usuario" required>
-        </div>
-    </div>
+    <% if (isNew) { %>
+        <h2 class="title is-4">Registrar Usuario</h2>
+        <form action="/users/signup" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
-    <div class="field">
-        <label class="label">Contraseña</label>
-        <div class="control">
-            <input class="input" type="password" name="password" placeholder="Tu contraseña" required>
-        </div>
-    </div>
+            <div class="field">
+                <label class="label">Usuario</label>
+                <div class="control">
+                    <input class="input" type="text" name="username" placeholder="Tu nombre de usuario" required>
+                </div>
+            </div>
 
-    <div class="control">
-        <button class="button is-link" type="submit">Ingresar</button>
-    </div>
-</form>
+            <div class="field">
+                <label class="label">Nombre completo</label>
+                <div class="control">
+                    <input class="input" type="text" name="nombre" placeholder="Tu nombre completo" required>
+                </div>
+            </div>
 
-<%- include('includes/_footer') %>
+            <div class="field">
+                <label class="label">Correo</label>
+                <div class="control">
+                    <input class="input" type="email" name="correo" placeholder="tu@correo.com" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Contraseña</label>
+                <div class="control">
+                    <input class="input" type="password" name="password" placeholder="Tu contraseña" required>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Registrarse</button>
+                </div>
+                <div class="control">
+                    <a class="button is-light" href="/users/login">Ya tengo cuenta</a>
+                </div>
+            </div>
+        </form>
+
+        <% } else { %>
+            <h2 class="title is-4">Iniciar Sesión</h2>
+            <form action="/users/login" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="field">
+                    <label class="label">Usuario</label>
+                    <div class="control">
+                        <input class="input" type="text" name="username" placeholder="Tu usuario" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Contraseña</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" placeholder="Tu contraseña" required>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link" type="submit">Ingresar</button>
+                    </div>
+                    <div class="control">
+                        <a class="button is-light" href="/users/signup">Crear cuenta</a>
+                    </div>
+                </div>
+            </form>
+            <% } %>
+
+                </div>
+                </section>
+
+                <%- include('includes/_footer') %>

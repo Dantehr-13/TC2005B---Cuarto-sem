@@ -1,0 +1,54 @@
+<%- include('../includes/_header') %>
+
+    <h2 class="title is-4">Gestión de Usuarios y Roles</h2>
+
+    <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Roles asignados</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (usuarios.length===0) { %>
+                <tr>
+                    <td colspan="5" class="has-text-centered">No hay usuarios registrados.</td>
+                </tr>
+                <% } else { %>
+                    <% for (let usuario of usuarios) { %>
+                        <tr>
+                            <td>
+                                <%= usuario.username %>
+                            </td>
+                            <td>
+                                <%= usuario.nombre %>
+                            </td>
+                            <td>
+                                <%= usuario.correo %>
+                            </td>
+                            <td>
+                                <% if (usuario.roles) { %>
+                                    <% const rolesList=usuario.roles.split(', '); %>
+                            <% for (let rol of rolesList) { %>
+                                <span class="tag is-info is-light"><%= rol %></span>
+                            <% } %>
+                        <% } else { %>
+                            <span class="has-text-grey">Sin roles</span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <a href="/admin/usuarios/<%= usuario.username %>/roles" class="button is-small is-primary">Editar Roles</a>
+                    </td>
+                </tr>
+            <% } %>
+        <% } %>
+    </tbody>
+</table>
+
+</div>
+</section>
+
+<%- include(' ../includes/_footer') %>

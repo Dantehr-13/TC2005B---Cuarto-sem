@@ -18,6 +18,17 @@
           </a>
         </div>
         <div class="navbar-menu is-active">
+          <div class="navbar-start">
+            <% if (permisos && permisos.includes('ver_personajes')) { %>
+              <a class="navbar-item" href="/personajes">Personajes</a>
+              <% } %>
+                <% if (permisos && permisos.includes('ver_materiales')) { %>
+                  <a class="navbar-item" href="/materiales">Materiales</a>
+                  <% } %>
+                    <% if (permisos && permisos.includes('gestionar_usuarios')) { %>
+                      <a class="navbar-item" href="/admin/usuarios">Admin</a>
+                      <% } %>
+          </div>
           <div class="navbar-end">
             <% if (isLoggedIn) { %>
               <div class="navbar-item">
@@ -29,6 +40,9 @@
               <% } else { %>
                 <a class="navbar-item button is-primary is-light" href="/users/login">
                   Iniciar Sesión
+                </a>
+                <a class="navbar-item button is-link is-light ml-2" href="/users/signup">
+                  Crear Cuenta
                 </a>
                 <% } %>
           </div>

@@ -1,3 +1,60 @@
 <%- include('includes/_header') %>
-<%- include('includes/_form') %>
-<%- include('includes/_footer') %>
+
+    <h2 class="title is-4">Nuevo Personaje</h2>
+
+    <form action="/personajes/new" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div class="field">
+            <label for="nombre" class="label">Nombre</label>
+            <div class="control">
+                <input id="nombre" name="nombre" class="input" type="text" placeholder="e.g Vi" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="descripcion" class="label">Descripción</label>
+            <div class="control">
+                <textarea id="descripcion" name="descripcion" class="textarea"
+                    placeholder="e.g. Criada en las calles salvajes de Zaun..." required></textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="tipo_id" class="label">Tipo</label>
+            <div class="control">
+                <div class="select">
+                    <select id="tipo_id" name="tipo_id" required>
+                        <option value="">Selecciona un tipo</option>
+                        <% for (let tipo of tipos) { %>
+                            <option value="<%= tipo.id %>">
+                                <%= tipo.tipo %>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="imagen" class="label">URL de Imagen</label>
+            <div class="control">
+                <input id="imagen" name="imagen" class="input" type="text"
+                    placeholder="e.g. https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Vi_0.jpg">
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <input class="button is-primary" type="submit" value="Guardar personaje">
+            </div>
+            <div class="control">
+                <a class="button is-light" href="/personajes">Cancelar</a>
+            </div>
+        </div>
+    </form>
+
+    </div>
+    </section>
+
+    <%- include('includes/_footer') %>
