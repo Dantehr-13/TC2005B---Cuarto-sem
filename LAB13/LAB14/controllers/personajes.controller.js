@@ -12,11 +12,14 @@ exports.get_add = (request, response, next) => {
 };
 
 exports.post_add = (request, response, next) => {
+    // Si multer procesó un archivo, usamos su ruta; si no, imagen queda null
+    const imagen = request.file ? request.file.path : null;
+
     const personaje = new Personaje(
         request.body.nombre,
         request.body.descripcion,
         request.body.tipo_id,
-        request.body.imagen
+        imagen
     );
     personaje.save()
         .then(() => {
@@ -59,5 +62,23 @@ exports.get_detail = (request, response, next) => {
         .catch(err => {
             console.log(err);
             response.status(500).send('Error al obtener el personaje');
+        });
+};
+
+// --- AJAX: Buscar personajes por nombre o tipo ---
+exports.get_buscar = (request, response, next) => {
+    const query = request.query.q || '';
+
+    const busqueda = query.trim() === ''
+        ? Personaje.fetchAll()
+        : Personaje.search(query);
+
+    busqueda
+        .then(([rows]) => {
+            response.status(200).json({ personajes: rows });
+        })
+        .catch(err => {
+            console.log(err);
+            response.status(500).json({ error: 'Error al buscar personajes' });
         });
 };

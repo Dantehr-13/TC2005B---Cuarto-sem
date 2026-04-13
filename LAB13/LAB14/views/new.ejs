@@ -2,7 +2,7 @@
 
     <h2 class="title is-4">Nuevo Personaje</h2>
 
-    <form action="/personajes/new" method="POST">
+    <form action="/personajes/new" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
         <div class="field">
@@ -37,11 +37,11 @@
         </div>
 
         <div class="field">
-            <label for="imagen" class="label">URL de Imagen</label>
+            <label for="archivo" class="label">Imagen del personaje</label>
             <div class="control">
-                <input id="imagen" name="imagen" class="input" type="text"
-                    placeholder="e.g. https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Vi_0.jpg">
+                <input id="archivo" name="archivo" class="input" type="file" accept="image/png, image/jpg, image/jpeg">
             </div>
+            <p class="help">Solo se permiten imágenes PNG o JPG.</p>
         </div>
 
         <div class="field is-grouped">

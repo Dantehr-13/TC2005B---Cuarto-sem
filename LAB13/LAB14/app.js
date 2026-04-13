@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -13,6 +14,34 @@ app.set('views', 'views');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json()); // Para recibir y enviar datos en formato JSON (AJAX)
+
+// --- Configuración de Multer para subida de archivos ---
+const fileStorage = multer.diskStorage({
+    destination: (request, file, callback) => {
+        callback(null, 'uploads');
+    },
+    filename: (request, file, callback) => {
+        callback(null, new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname);
+    },
+});
+
+const fileFilter = (request, file, callback) => {
+    if (
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg'
+    ) {
+        callback(null, true);
+    } else {
+        callback(null, false);
+    }
+};
+
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('archivo'));
+
+// Servir el directorio uploads de forma estática
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cookieParser());
 app.use(session({
     secret: 'mi string secreto que debe ser un string aleatorio muy largo, no como éste',

@@ -9,6 +9,7 @@ router.get('/add', hasPermission('crear_personaje'), personajesController.get_ad
 router.get('/nuevo', hasPermission('crear_personaje'), personajesController.get_add);
 router.post('/new', hasPermission('crear_personaje'), personajesController.post_add);
 router.get('/old', personajesController.get_old);
+router.get('/buscar', personajesController.get_buscar); // AJAX endpoint
 router.get('/:id', personajesController.get_detail);
 router.use(personajesController.get_list);
 
