@@ -2,220 +2,43 @@
 
     <h2 class="title is-4">Personajes de League of Legends</h2>
 
-    <!-- ==========================================
-         COMPONENTE AJAX: Buscador en tiempo real
-         ========================================== -->
-
-    <!-- Barra de búsqueda -->
-    <div class="field has-addons mb-4">
-        <div class="control is-expanded">
-            <input
-                id="buscador"
-                class="input is-medium"
-                type="text"
-                placeholder="🔍 Busca por nombre o tipo (ej. Jax, Mago)..."
-                autocomplete="off"
-            >
-        </div>
-        <div class="control">
-            <button id="btn-limpiar" class="button is-medium is-light" title="Limpiar búsqueda">
-                ✕
-            </button>
-        </div>
-    </div>
-
-    <!-- Estado de búsqueda: contador + spinner -->
-    <div class="level mb-4">
-        <div class="level-left">
-            <span id="resultado-contador" class="tag is-info is-light is-medium"></span>
-        </div>
-        <div class="level-right">
-            <span id="spinner" class="is-hidden">
-                <span class="tag is-warning is-light">⏳ Buscando...</span>
-            </span>
-        </div>
-    </div>
-
     <!-- Botón para crear nuevo personaje (solo si tiene permiso) -->
     <% if (permisos && permisos.includes('crear_personaje')) { %>
         <a class="button is-primary mb-4" href="/personajes/new">＋ Nuevo personaje</a>
     <% } %>
 
-    <!-- Grid de tarjetas — se actualiza dinámicamente con AJAX -->
-    <div id="personajes-grid" class="columns is-multiline mt-2">
-        <!-- Cargando estado inicial... -->
-        <div class="column">
-            <span class="tag is-light">Cargando personajes...</span>
-        </div>
-    </div>
-
-    <!-- Mensaje cuando no hay resultados -->
-    <div id="sin-resultados" class="notification is-warning is-light is-hidden">
-        😔 No se encontraron personajes que coincidan con tu búsqueda.
-    </div>
-
-    <!-- ==========================================
-         SECCIÓN INFORMATIVA: Componentes AJAX
-         ========================================== -->
-    <hr class="mt-6">
-    <div class="notification is-info is-light mt-4">
-        <p class="title is-6">ℹ️ Componentes AJAX utilizados en este laboratorio</p>
-        <ul>
-            <li>
-                <strong>Buscador de personajes en tiempo real:</strong>
-                Al escribir en el campo de búsqueda, se realiza una petición
-                <code>GET /personajes/buscar?q=...</code> usando <code>fetch()</code>.
-                El servidor responde con un JSON de personajes filtrados desde la base
-                de datos (búsqueda por nombre o tipo con <code>LIKE</code>).
-                El DOM se actualiza sin recargar la página, mostrando las tarjetas de
-                resultados de forma dinámica.
-            </li>
-        </ul>
-        <p class="mt-2 help">
-            <strong>Evento:</strong> <code>input</code> en el campo de texto (con debounce de 300ms) •
-            <strong>Método HTTP:</strong> <code>GET</code> •
-            <strong>Respuesta del servidor:</strong> <code>JSON</code> •
-            <strong>Actualización del DOM:</strong> innerHTML del grid de tarjetas
-        </p>
-    </div>
-
-    <!-- ==========================================
-         SECCIÓN INFORMATIVA: Preguntas del Laboratorio
-         ========================================== -->
-    <h3 class="title is-5 mt-6">❓ Preguntas del Laboratorio (AJAX y JSON)</h3>
-    <div class="content">
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>¿Qué importancia tiene AJAX en el desarrollo de RIA's (Rich Internet Applications)?</p>
+    <div class="columns is-multiline mt-2">
+        <% if (personajes.length > 0) { %>
+            <% for (let p of personajes) { %>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <% if (p.imagen) { %>
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="/<%= p.imagen %>" alt="<%= p.nombre %>">
+                                </figure>
+                            </div>
+                        <% } %>
+                        <div class="card-content">
+                            <p class="title is-5"><%= p.nombre %></p>
+                            <span class="tag is-info"><%= p.tipo %></span>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="/personajes/<%= p.id %>" class="card-footer-item">Ver detalle</a>
+                        </footer>
+                    </div>
+                </div>
+            <% } %>
+        <% } else { %>
+            <div class="column">
+                <div class="notification is-warning is-light">
+                     No hay personajes registrados.
+                </div>
             </div>
-            <div class="message-body">
-                <strong>AJAX (Asynchronous JavaScript and XML)</strong> es el pilar fundamental para las RIAs. Permite que las aplicaciones web se comporten de manera fluida y rápida, de forma muy parecida a una aplicación nativa de escritorio o móvil. Su importancia radica en que permite enviar o solicitar datos al servidor en segundo plano y actualizar partes específicas de la interfaz de usuario <strong>sin necesidad de recargar la página completa</strong>. Esto mejora drásticamente la experiencia de usuario (UX), reduce los tiempos de espera y optimiza el consumo de ancho de banda al transferir solo los datos necesarios (como JSON) en lugar de recargar todos los estilos y el documento HTML entero en cada interacción.
-            </div>
-        </article>
-
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>¿Qué implicaciones de seguridad tiene AJAX? ¿Dónde se deben hacer las validaciones de seguridad, del lado del cliente o del lado del servidor?</p>
-            </div>
-            <div class="message-body">
-                AJAX introduce nuevos retos de seguridad porque expone <em>endpoints</em> (rutas o APIs, como <code>/personajes/buscar</code> en este proyecto) que pueden ser invocados fácilmente usando herramientas, scripts maliciosos, o desde la consola del navegador, independientemente de la interfaz gráfica que preparamos. Aumenta la superficie de ataques como XSS (Cross-Site Scripting), CSRF (Cross-Site Request Forgery) o Inyección SQL si el servidor confía ciegamente en lo que el cliente le envía por AJAX.<br><br>
-                <strong>Las validaciones de seguridad SIEMPRE deben hacerse del lado del servidor.</strong> Las validaciones del lado del cliente (en JavaScript o HTML) son extremadamente fáciles de ser bloqueadas o modificadas por un atacante y sirven únicamente para darle un mejor flujo y experiencia al usuario <em>bien intencionado</em> al avisarle rápidamente de sus errores. El servidor es la única barrera de defensa y NUNCA debe confiar en la información enviada desde el cliente.
-            </div>
-        </article>
-
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>¿Qué es JSON?</p>
-            </div>
-            <div class="message-body">
-                <strong>JSON (JavaScript Object Notation)</strong> es un formato de texto ligero y estructurado para el intercambio de datos. A pesar de estar basado en la sintaxis de objetos de JavaScript, es un formato completamente <strong>independiente del lenguaje de programación</strong>, y casi cualquier lenguaje backend (incluyendo Node.js/Express) puede interpretarlo o generarlo. La información se estructura mediante colecciones de pares clave-valor (como un objeto en JavaScript o un diccionario en Python) y listas ordenadas de valores (arreglos). En la práctica casi cualquier proyecto moderno lo prefiere en lugar de XML gracias a que es mucho más legible para humanos y menos pesado para su análisis computacional.
-            </div>
-        </article>
+        <% } %>
     </div>
 
     </div>
     </section>
 
     <%- include('includes/_footer') %>
-
-    <!-- ==========================================
-         JAVASCRIPT AJAX - Buscador en tiempo real
-         ========================================== -->
-    <script>
-        // --- Referencias al DOM ---
-        const buscador       = document.getElementById('buscador');
-        const btnLimpiar     = document.getElementById('btn-limpiar');
-        const grid           = document.getElementById('personajes-grid');
-        const sinResultados  = document.getElementById('sin-resultados');
-        const spinner        = document.getElementById('spinner');
-        const contador       = document.getElementById('resultado-contador');
-
-        // --- Renderizar tarjetas en el grid ---
-        const renderPersonajes = (personajes) => {
-            sinResultados.classList.add('is-hidden');
-
-            if (personajes.length === 0) {
-                grid.innerHTML = '';
-                sinResultados.classList.remove('is-hidden');
-                contador.textContent = '0 resultados';
-                return;
-            }
-
-            contador.textContent = `${personajes.length} resultado${personajes.length !== 1 ? 's' : ''}`;
-
-            grid.innerHTML = personajes.map(p => {
-                const imagenHTML = p.imagen
-                    ? `<div class="card-image">
-                           <figure class="image">
-                               <img src="/${p.imagen}" alt="${p.nombre}">
-                           </figure>
-                       </div>`
-                    : '';
-
-                return `
-                    <div class="column is-one-third">
-                        <div class="card">
-                            ${imagenHTML}
-                            <div class="card-content">
-                                <p class="title is-5">${p.nombre}</p>
-                                <span class="tag is-info">${p.tipo}</span>
-                            </div>
-                            <footer class="card-footer">
-                                <a href="/personajes/${p.id}" class="card-footer-item">Ver detalle</a>
-                            </footer>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        };
-
-        // --- Petición AJAX al servidor ---
-        const buscarPersonajes = (query) => {
-            spinner.classList.remove('is-hidden');
-
-            fetch(`/personajes/buscar?q=${encodeURIComponent(query)}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(result => {
-                if (!result.ok) throw new Error('Error en la respuesta del servidor');
-                return result.json();
-            })
-            .then(data => {
-                renderPersonajes(data.personajes);
-            })
-            .catch(err => {
-                console.log(err);
-                grid.innerHTML = `
-                    <div class="column">
-                        <div class="notification is-danger is-light">
-                            ❌ Ocurrió un error al buscar personajes. Intenta de nuevo.
-                        </div>
-                    </div>`;
-                contador.textContent = '';
-            })
-            .finally(() => {
-                spinner.classList.add('is-hidden');
-            });
-        };
-
-        // --- Debounce: evita peticiones en cada tecla, espera 300ms ---
-        let debounceTimer;
-        buscador.addEventListener('input', () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                buscarPersonajes(buscador.value.trim());
-            }, 300);
-        });
-
-        // --- Botón limpiar ---
-        btnLimpiar.addEventListener('click', () => {
-            buscador.value = '';
-            buscarPersonajes('');
-        });
-
-        // --- Carga inicial: traer todos los personajes al cargar la página ---
-        buscarPersonajes('');
-    </script>

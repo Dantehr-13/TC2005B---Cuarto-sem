@@ -33,16 +33,4 @@ module.exports = class Personaje {
         return db.execute('SELECT * FROM tipo');
     }
 
-    // Búsqueda AJAX: filtra por nombre o tipo con LIKE
-    static search(query) {
-        const term = `%${query}%`;
-        return db.execute(
-            `SELECT personajes.*, tipo.tipo
-             FROM personajes
-             INNER JOIN tipo ON personajes.tipo_id = tipo.id
-             WHERE personajes.nombre LIKE ? OR tipo.tipo LIKE ?
-             ORDER BY personajes.nombre ASC`,
-            [term, term]
-        );
-    }
 }

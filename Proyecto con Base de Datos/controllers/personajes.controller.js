@@ -53,32 +53,26 @@ exports.get_list = (request, response, next) => {
 exports.get_detail = (request, response, next) => {
     const id = request.params.id;
     Personaje.fetchOne(id)
-        .then(([rows, fieldData]) => {
+        .then(async ([rows]) => {
             if (rows.length === 0) {
                 return response.status(404).send('Personaje no encontrado');
             }
-            response.render('detail', { personaje: rows[0] });
+            const personaje = rows[0];
+            let championStats = null;
+            try {
+                const versionsRes = await fetch('https://ddragon.leagueoflegends.com/api/versions.json');
+                const versions = await versionsRes.json();
+                const version = versions[0];
+                const champRes = await fetch(
+                    `https://ddragon.leagueoflegends.com/cdn/${version}/data/es_ES/champion/${personaje.nombre}.json`
+                );
+                const champData = await champRes.json();
+                championStats = champData.data[personaje.nombre]?.stats ?? null;
+            } catch (_) {}
+            response.render('detail', { personaje, championStats });
         })
         .catch(err => {
             console.log(err);
             response.status(500).send('Error al obtener el personaje');
-        });
-};
-
-// --- AJAX: Buscar personajes por nombre o tipo ---
-exports.get_buscar = (request, response, next) => {
-    const query = request.query.q || '';
-
-    const busqueda = query.trim() === ''
-        ? Personaje.fetchAll()
-        : Personaje.search(query);
-
-    busqueda
-        .then(([rows]) => {
-            response.status(200).json({ personajes: rows });
-        })
-        .catch(err => {
-            console.log(err);
-            response.status(500).json({ error: 'Error al buscar personajes' });
         });
 };

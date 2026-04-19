@@ -14,7 +14,6 @@ app.set('views', 'views');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); // Para recibir y enviar datos en formato JSON (AJAX)
 
 // --- Configuración de Multer para subida de archivos ---
 const fileStorage = multer.diskStorage({
