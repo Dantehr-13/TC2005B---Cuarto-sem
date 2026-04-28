@@ -61,6 +61,7 @@ exports.get_detail = (request, response, next) => {
             const personaje = rows[0];
             let championStats = null;
             try {
+                // aquí
                 const versionsRes = await fetch('https://ddragon.leagueoflegends.com/api/versions.json');
                 const versions = await versionsRes.json();
                 const version = versions[0];
