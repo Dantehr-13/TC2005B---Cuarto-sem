@@ -15,6 +15,7 @@ app.set('views', 'views');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// aquí
 // --- Configuración de Multer para subida de archivos ---
 const fileStorage = multer.diskStorage({
     destination: (request, file, callback) => {

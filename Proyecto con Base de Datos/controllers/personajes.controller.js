@@ -12,6 +12,7 @@ exports.get_add = (request, response, next) => {
 };
 
 exports.post_add = (request, response, next) => {
+    // aquí
     // Si multer procesó un archivo, usamos su ruta; si no, imagen queda null
     const imagen = request.file ? request.file.path : null;
 
