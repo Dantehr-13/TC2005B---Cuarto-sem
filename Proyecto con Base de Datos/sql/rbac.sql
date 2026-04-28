@@ -51,6 +51,7 @@ INSERT INTO `roles_privilegios` (`id_rol`, `id_privilegio`) VALUES
 
 DELIMITER $$
 
+-- aquí
 --Verifica si un usuario tiene un privilegio específico
 CREATE PROCEDURE `std_1_verpril`(
   IN p_username VARCHAR(50),
