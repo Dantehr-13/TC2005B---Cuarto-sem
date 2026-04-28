@@ -96,6 +96,7 @@ DELIMITER ;
 
 -- --------------------------------------------------------
 
+-- aquí
 -- Transacción 1: Registrar un nuevo usuario y asignarle un rol por defecto
 DELIMITER $$
 CREATE PROCEDURE `txn_1_registro_usuario`(
